@@ -18,4 +18,9 @@ public class CommentController {
         return commentService.addComment(scheduleId, commentRequestDto);
     }
 
+    @PutMapping("/{commentId}/comment")
+    public CommentResponseDto updateComment(@PathVariable Long commentId, @RequestBody CommentRequestDto commentRequestDto) {
+        return commentService.updateComment(commentId,commentRequestDto);
+    }
+
 }

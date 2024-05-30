@@ -3,12 +3,9 @@ package com.sparta.schedule.comment.entity;
 import com.sparta.schedule.Timestamped;
 import com.sparta.schedule.schedule.entity.Schedule;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -37,5 +34,11 @@ public class Comment extends Timestamped {
     public Comment(String content, Schedule schedule) {
         this.content = content;
         this.schedule = schedule;
+    }
+
+    public void updateComment(String content) {
+
+        this.content = content;
+
     }
 }

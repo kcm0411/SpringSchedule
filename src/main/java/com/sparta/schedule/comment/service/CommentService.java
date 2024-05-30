@@ -8,6 +8,7 @@ import com.sparta.schedule.schedule.entity.Schedule;
 import com.sparta.schedule.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,4 +26,14 @@ public class CommentService {
         return new CommentResponseDto(comment);
     }
 
+    @Transactional
+    public CommentResponseDto updateComment(Long commentId, CommentRequestDto commentRequestDto) {
+
+        Comment comment = commentRepository.findById(commentId).orElseThrow(
+                () -> new RuntimeException("Comment not found"));
+
+        comment.updateComment(commentRequestDto.getContent());
+        return new CommentResponseDto(comment);
+
+    }
 }
