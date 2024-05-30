@@ -1,9 +1,9 @@
-package com.sparta.schedule.controller;
+package com.sparta.schedule.schedule.controller;
 
-import com.sparta.schedule.dto.RequestDto;
-import com.sparta.schedule.dto.ResponseDto;
-import com.sparta.schedule.entity.Schedule;
-import com.sparta.schedule.repository.ScheduleRepository;
+import com.sparta.schedule.schedule.dto.RequestDto;
+import com.sparta.schedule.schedule.dto.ResponseDto;
+import com.sparta.schedule.schedule.entity.Schedule;
+import com.sparta.schedule.schedule.repository.ScheduleRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +40,8 @@ public class scheduleController {
         return scheduleRepository.findAllByOrderByDateTimeDesc().stream().map(ResponseDto::new).toList();
 
     }
-
+    //              /schedule/1/1234 >> param
+    //              /schedule?id=1&pw=1234 >> query
     @PutMapping("/schedule/{id}/{pw}")
     public ResponseDto updateSchedule(@PathVariable Long id, @PathVariable String pw, @RequestBody RequestDto requestDto) throws IllegalAccessException {
 
